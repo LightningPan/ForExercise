@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exercise.mapper.SciNewsMapper">
+  <resultMap id="BaseResultMap" type="com.exercise.entity.SciNews">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="downloads" jdbcType="INTEGER" property="downloads" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from `sci_news`
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.exercise.entity.SciNews" useGeneratedKeys="false">
+    insert into `sci_news` (id ,title, type, user_id,
+      link, cover, downloads, 
+       create_by, update_by)
+    values (#{id,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR},
+      #{link,jdbcType=VARCHAR}, #{cover,jdbcType=VARCHAR}, #{downloads,jdbcType=INTEGER}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.exercise.entity.SciNews">
+    update `sci_news`
+    <trim prefix="set" suffixOverrides=",">
+      <if test="title != null">title = #{title,jdbcType=VARCHAR},</if>
+      <if test="type != null">type = #{type,jdbcType=VARCHAR},</if>
+      <if test="userId != null">user_id = #{userId,jdbcType=VARCHAR},</if>
+      <if test="link != null">link = #{link,jdbcType=VARCHAR},</if>
+      <if test="cover != null">cover = #{cover,jdbcType=VARCHAR},</if>
+      <if test="downloads != null">downloads = #{downloads,jdbcType=INTEGER},</if>
+      <if test="createBy != null">create_by = #{createBy,jdbcType=VARCHAR},</if>
+      <if test="updateBy != null">update_by = #{updateBy,jdbcType=VARCHAR}</if>
+    </trim>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id, title, type, user_id, link, cover, downloads, gmt_create, create_by, gmt_update, 
+    update_by
+    from `sci_news`
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, title, type, user_id, link, cover, downloads, gmt_create, create_by, gmt_update, 
+    update_by
+    from `sci_news`
+  </select>
+</mapper>
