@@ -31,4 +31,5 @@ public class SysUserService {
     public int updateByPrimaryKey(SysUser sysUser){
         return sysUserMapper.updateByPrimaryKey(sysUser);
     }
+
 }

@@ -10,7 +10,7 @@
     <result column="salt" jdbcType="VARCHAR" property="salt" />
     <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
     <result column="gmt_update" jdbcType="TIMESTAMP" property="gmtUpdate" />
-    <collection property="sciNews" column="id" ofType="SciNews" select="com.exercise.mapper.SciNewsMapper.selectAll">
+    <collection property="sciNews" column="id" ofType="SciNews" select="com.exercise.mapper.SciNewsMapper.selectByUser">
 
     </collection>
   </resultMap>

@@ -31,4 +31,5 @@ public class SciNewsService {
     public int updateByPrimaryKey(SciNews sciNews){
         return snMapper.updateByPrimaryKey(sciNews);
     }
+    public List<SciNews> selectByUser(String id){return snMapper.selectByUser(id);}
 }

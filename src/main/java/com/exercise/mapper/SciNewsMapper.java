@@ -15,4 +15,6 @@ public interface SciNewsMapper {
     List<SciNews> selectAll();
 
     int updateByPrimaryKey(SciNews record);
+
+    List<SciNews> selectByUser(String id);
 }
